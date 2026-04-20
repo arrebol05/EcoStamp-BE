@@ -1,6 +1,7 @@
 import { pgTable, timestamp, uniqueIndex, uuid, varchar } from "drizzle-orm/pg-core";
 import { users } from "./user";
 import { greenStations } from "./green-station";
+import { partners } from "./partner";
 
 export const employees = pgTable(
   "employees",
@@ -12,6 +13,8 @@ export const employees = pgTable(
     stationId: uuid("station_id")
       .notNull()
       .references(() => greenStations.id, { onDelete: "cascade" }),
+    partnerId: uuid("partner_id")
+      .references(() => partners.id, { onDelete: "set null" }),
     status: varchar("status", { length: 32 }).notNull().default("ACTIVE"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   },

@@ -15,7 +15,9 @@ import {
   type WasteTransaction,
   type WasteType,
 } from "../../db/schema";
-import type { WasteTransactionStatusDto } from "./dto";
+import { wasteTxStatus } from "./dto";
+
+type WasteTransactionStatusDto = typeof wasteTxStatus._type;
 
 export class WasteTransactionRepository {
   async findEmployeeById(employeeId: string): Promise<Employee | null> {
