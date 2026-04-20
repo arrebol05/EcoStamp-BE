@@ -11,7 +11,7 @@ import { errorHandler, notFoundHandler } from "./middlewares/error";
 import cors from "cors";
 import { openApiDocument } from "./docs/openapi";
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -34,9 +34,4 @@ app.use("/", wasteTransactionRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
-
-app.listen(env.port, () => {
-  console.log(`Server running at http://localhost:${env.port}`);
-  console.log(`Swagger docs available at http://localhost:${env.port}/api-docs`);
-});
 

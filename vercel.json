@@ -1,1 +1,12 @@
-{}
+{
+    "buildCommand": "npm install && npm run typecheck",
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/api"
+        }
+    ]
+}
