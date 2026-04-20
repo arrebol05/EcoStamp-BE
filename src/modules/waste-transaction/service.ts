@@ -8,7 +8,7 @@ import {
 import { WasteTransactionRepository } from "./repository";
 
 export class WasteTransactionService {
-  constructor(private readonly repository: WasteTransactionRepository) {}
+  constructor(private readonly repository: WasteTransactionRepository) { }
 
   private async resolveEmployeeId(actor: AuthUser): Promise<string> {
     if (actor.role === "USER") {
@@ -142,11 +142,17 @@ export class WasteTransactionService {
       limit: query.limit,
     };
 
-    if (query.status) {
+    if (query.status !== undefined) {
       params.status = query.status;
     }
 
-    return this.repository.listTransactionsForActor(params);
+    return this.repository.listTransactionsForActor(params as {
+      employeeId?: string;
+      partnerId?: string;
+      status?: "PENDING" | "APPROVED" | "REJECTED";
+      page: number;
+      limit: number;
+    });
   }
 
   async getById(actor: AuthUser, transactionId: string) {
