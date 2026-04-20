@@ -1,15 +1,15 @@
-import "./config";
+import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
 import swaggerUi from "swagger-ui-express";
-import { authRouter } from "./modules/auth/routes";
-import { addressRouter } from "./modules/address/routes";
-import { wasteTransactionRouter } from "./modules/waste-transaction/routes";
-import { userRouter } from "./modules/user/route";
-import { env } from "./config";
-import { errorHandler, notFoundHandler } from "./middlewares/error";
+import { authRouter } from "./modules/auth/routes.js";
+import { addressRouter } from "./modules/address/routes.js";
+import { wasteTransactionRouter } from "./modules/waste-transaction/routes.js";
+import { userRouter } from "./modules/user/route.js";
+import { env } from "./config/index.js";
+import { errorHandler, notFoundHandler } from "./middlewares/error.js";
 import cors from "cors";
-import { openApiDocument } from "./docs/openapi";
+import { openApiDocument } from "./docs/openapi.js";
 
 export const app = express();
 
