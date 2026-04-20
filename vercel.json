@@ -1,12 +1,6 @@
 {
-    "buildCommand": "npm install && npm run typecheck",
+    "buildCommand": "npm install && npm run typecheck && tsc",
     "env": {
         "NODE_ENV": "production"
-    },
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/api"
-        }
-    ]
+    }
 }
