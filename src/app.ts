@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: env.frontendUrl,
     credentials: true,
   }),
 );
@@ -36,7 +36,7 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 app.listen(env.port, () => {
-	console.log(`Server running at http://localhost:${env.port}`);
-	console.log(`Swagger docs available at http://localhost:${env.port}/api-docs`);
+  console.log(`Server running at http://localhost:${env.port}`);
+  console.log(`Swagger docs available at http://localhost:${env.port}/api-docs`);
 });
 
